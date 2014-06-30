@@ -1,0 +1,45 @@
+
+// build with gradle 1.10
+
+apply plugin: 'java'
+apply plugin: 'java-library-distribution'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.3.4'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    testCompile 'junit:junit:4.11'
+}
+
+
+distributions {
+    main{
+        baseName = 'AmmConverterClient'
+        contents {
+            from { 'dist' }
+        }
+    }
+}
+
+
+task assembleManifestClasspath {
+    project.myjarclasspath = ""
+    configurations.runtime.each { file ->
+        project.myjarclasspath += "lib/" + file.name + " "
+    }
+}
+
+
+jar {
+    manifest {
+        attributes("Class-Path": project.myjarclasspath)
+        attributes("Main-Class": "com.skoky.client.MsgConverter")
+        attributes("Implementation-Vendor": "skokys@gmail.com")
+    }
+}
+
+
