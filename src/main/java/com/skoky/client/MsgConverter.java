@@ -15,23 +15,33 @@ public class MsgConverter {
 
     public static void main(String[] args) {
 
+        String type = "P3";
+        String byteData = null;
         for (int i = 0; i < args.length; i++) {
             if ("-bytes".equals(args[i])) {
                 i++;
-                String byteData = args[i];
-                new MsgConverter().toJson(byteData);
-                return;
-            }  // TODO conversion from file, stream etc
+                byteData = args[i];
+            } else if ("-type".equals(args[i])) {
+                i++;
+                type = args[i];
+            } // TODO conversion from file, stream etc
         }
+
+        if (byteData != null) {
+            new MsgConverter().toJson(type, byteData);
+        } else {
+            System.out.println("No data input");
+        }
+
     }
 
-    private void toJson(String byteData) {
+    private void toJson(String type, String byteData) {
 
         JSONObject obj = new JSONObject();
-        obj.put("type", "P3");
-        obj.put("data",byteData);
+        obj.put("type", type);
+        obj.put("data", byteData);
 
-        System.out.println("JSON:"+obj.toJSONString());
+        System.out.println("JSON:" + obj.toJSONString());
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost("http://ambconverter.appspot.com/json");
@@ -45,22 +55,6 @@ public class MsgConverter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-//        nvps.add(new BasicNameValuePair("username", "vip"));
-//        nvps.add(new BasicNameValuePair("password", "secret"));
-//        httpPost.setEntity(new UrlEncodedFormEntity(nvps));
-//        CloseableHttpResponse response2 = httpclient.execute(httpPost);
-//
-//        try {
-//            System.out.println(response2.getStatusLine());
-//            HttpEntity entity2 = response2.getEntity();
-//            // do something useful with the response body
-//            // and ensure it is fully consumed
-//            EntityUtils.consume(entity2);
-//        } finally {
-//            response2.close();
-//        }
     }
 
 }
