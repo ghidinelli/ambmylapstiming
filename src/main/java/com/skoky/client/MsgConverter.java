@@ -28,14 +28,15 @@ public class MsgConverter {
         }
 
         if (byteData != null) {
-            new MsgConverter().toJson(type, byteData);
+            String json = new MsgConverter().toJson(type, byteData);
+            System.out.println("Json result:"+json);
         } else {
             System.out.println("No data input");
         }
 
     }
 
-    private void toJson(String type, String byteData) {
+    public String toJson(String type, String byteData) {
 
         JSONObject obj = new JSONObject();
         obj.put("type", type);
@@ -51,9 +52,10 @@ public class MsgConverter {
         try {
             CloseableHttpResponse response = httpclient.execute(httpPost);
             System.out.println("Response status:" + response.getStatusLine());
-            System.out.println(EntityUtils.toString(response.getEntity()));
+            return EntityUtils.toString(response.getEntity());
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
