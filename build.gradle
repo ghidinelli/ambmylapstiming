@@ -1,5 +1,5 @@
 
-// build with gradle 1.10
+// build with gradle 2.2.1
 
 apply plugin: 'java'
 apply plugin: 'java-library-distribution'
@@ -26,19 +26,13 @@ distributions {
 }
 
 
-task assembleManifestClasspath {
-    project.myjarclasspath = ""
-    configurations.runtime.each { file ->
-        project.myjarclasspath += "lib/" + file.name + " "
-    }
-}
-
-
 jar {
     manifest {
-        attributes("Class-Path": project.myjarclasspath)
         attributes("Main-Class": "com.skoky.client.MsgConverter")
         attributes("Implementation-Vendor": "skokys@gmail.com")
+        attributes(
+                "Class-Path": configurations.compile.collect { "lib/"+it.getName() }.join(' '))
+
     }
 }
 
