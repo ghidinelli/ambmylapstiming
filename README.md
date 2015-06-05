@@ -10,6 +10,16 @@ The servers converter supports decoders AMBrc Decoder, MYLAPS RC4 Decoder, AMBmx
 The legacy decoders are partly supported as well: AMBrc, AMB20, AMB130, TranX-2 / TranX2, TranXPro, Activ, PegaSys as well. 
 There are also 3rd party decoders supporting this protocols, but not listed on this site.
 
+For offline conversion use free converion utility linked from Maven central repo:
+
+ <dependency>
+     <groupId>eu.plib</groupId>
+     <artifactId>plib</artifactId>
+     <version>1.2</version>
+ </dependency>
+
+or Gradle version:
+ compile 'eu.plib:plib:1.2'
 
 For another implemenations of the converter see https://sites.google.com/site/ambmylapstester
 
