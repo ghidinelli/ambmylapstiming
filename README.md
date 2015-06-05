@@ -12,14 +12,16 @@ There are also 3rd party decoders supporting this protocols, but not listed on t
 
 For offline conversion use free converion utility linked from Maven central repo:
 
+```
  <dependency>
      <groupId>eu.plib</groupId>
      <artifactId>plib</artifactId>
      <version>1.2</version>
  </dependency>
-
+```
 or Gradle version:
- compile 'eu.plib:plib:1.2'
-
+```
+compile 'eu.plib:plib:1.2'
+```
 For another implemenations of the converter see https://sites.google.com/site/ambmylapstester
 
