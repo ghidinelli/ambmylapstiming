@@ -10,7 +10,7 @@ The servers converter supports decoders AMBrc Decoder, MYLAPS RC4 Decoder, AMBmx
 The legacy decoders are partly supported as well: AMBrc, AMB20, AMB130, TranX-2 / TranX2, TranXPro, Activ, PegaSys as well. 
 There are also 3rd party decoders supporting this protocols, but not listed on this site.
 
-For offline conversion use free converion utility linked from Maven central repo:
+For offline conversion use free conversion utility linked from Maven central repo:
 
 ```
  <dependency>
