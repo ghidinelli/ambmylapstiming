@@ -23,5 +23,5 @@ or Gradle version:
 ```
 compile 'eu.plib:plib:1.3'
 ```
-For another implemenations of the converter see https://sites.google.com/site/ambmylapstester
+For another implemenations of the converter see http://www.plib.eu
 
