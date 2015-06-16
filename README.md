@@ -16,7 +16,7 @@ For offline conversion use free conversion utility linked from Maven central rep
  <dependency>
      <groupId>eu.plib</groupId>
      <artifactId>plib</artifactId>
-     <version>1.2</version>
+     <version>1.3</version>
  </dependency>
 ```
 or Gradle version:
